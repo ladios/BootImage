@@ -6,7 +6,7 @@ mount("MTD", "system", "/system");
 package_extract_dir("system", "/system");
 unmount("/system");
 ui_print("Extracting BootImage files...");
-package_extract_dir("kernel", "/tmp");
+package_extract_dir("bootimg", "/tmp");
 ui_print("Updating kernel and ramdisk...");
 set_perm(0, 0, 0777, "/tmp/dump_image");
 set_perm(0, 0, 0777, "/tmp/mkbootimg.sh");
