@@ -9,7 +9,7 @@ out = $(PWD)/out
 update.zip = $(out)/$(name).zip
 unsigned.zip = $(out)/unsigned-$(name).zip
 
-dirs = META-INF kernel system
+dirs = META-INF bootimg system
 updater-script = META-INF/com/google/android/updater-script
 
 local_module_files = $(wildcard system/lib/modules/*.ko)
