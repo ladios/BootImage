@@ -11,7 +11,6 @@ unsigned.zip = $(out)/unsigned-$(name).zip
 
 dirs = META-INF kernel system
 updater-script = META-INF/com/google/android/updater-script
-jar = ~/android/testsign.jar
 
 local_module_files = $(wildcard system/lib/modules/*.ko)
 module_files = $(foreach file,$(local_module_files),"/$(file)")
