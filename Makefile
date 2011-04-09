@@ -1,18 +1,27 @@
 include config.mk
+include version.mk
 
 empty =
 space = $(empty) $(empty)
 comma = ,
 
+version ?= $(empty)
+ifneq ($(version), $(empty))
+	version := -$(version)
+endif
+
 tmp = $(PWD)/tmp
 out = $(PWD)/out
-update.zip = $(out)/$(name).zip
-unsigned.zip = $(out)/unsigned-$(name).zip
+update.zip = $(out)/$(name)$(version).zip
+unsigned.zip = $(out)/unsigned-$(name)$(version).zip
 
-dirs = META-INF bootimg system
+dirs = META-INF bootimg
 updater-script = META-INF/com/google/android/updater-script
 
 local_module_files = $(wildcard system/lib/modules/*.ko)
+ifneq ($(local_module_files),)
+    dirs += system
+endif
 module_files = $(foreach file,$(local_module_files),"/$(file)")
 tag_delete_modules = \#\#\#DELETE_FILES\#\#\#
 command_delete_modules = delete($(subst $(space),$(comma) ,$(module_files)));
